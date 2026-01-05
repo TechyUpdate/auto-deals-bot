@@ -1,21 +1,23 @@
 import feedparser
 import time
-from telegram import Bot
+import requests
+from telegram import Bot, InputMediaPhoto
 
-# ================= CONFIG =================
-BOT_TOKEN = "YAHAN_APNA_BOT_TOKEN_DALO"
-CHANNEL_ID = "@yourchannelusername"   # @ ke sath
+# ========== CONFIG ==========
+BOT_TOKEN = "PASTE_YOUR_BOT_TOKEN"
+CHANNEL_ID = "@yourchannelusername"
 
 RSS_FEEDS = [
     "https://www.desidime.com/deals/feed"
 ]
 
-CHECK_INTERVAL = 600  # 10 minute
-DELAY_BETWEEN_POSTS = 15  # seconds
+CHECK_INTERVAL = 600        # 10 min
+POST_DELAY = 20             # spam safe
+AFFILIATE_TAG = "?affid=YOURTAG"   # placeholder
 
 bot = Bot(token=BOT_TOKEN)
 
-# ================= DUPLICATE SYSTEM =================
+# ========== DUPLICATE SYSTEM ==========
 def load_posted():
     try:
         with open("posted.txt", "r") as f:
@@ -29,7 +31,17 @@ def save_posted(link):
 
 posted_links = load_posted()
 
-# ================= MAIN LOOP =================
+# ========== IMAGE FETCH ==========
+def extract_image(entry):
+    if "media_content" in entry:
+        return entry.media_content[0]["url"]
+    return None
+
+# ========== CLEAN TEXT ==========
+def clean_text(text):
+    return text.replace("<br />", "").replace("&nbsp;", "")[:200]
+
+# ========== MAIN LOOP ==========
 while True:
     for feed_url in RSS_FEEDS:
         feed = feedparser.parse(feed_url)
@@ -41,20 +53,35 @@ while True:
                 continue
 
             title = entry.title
-            summary = entry.summary[:180]
+            summary = clean_text(entry.summary)
+            image_url = extract_image(entry)
 
-            message = (
+            affiliate_link = link + AFFILIATE_TAG
+
+            caption = (
                 f"🔥 {title}\n\n"
                 f"📝 {summary}\n\n"
                 f"🛒 Buy Now 👇\n"
-                f"{link}"
+                f"{affiliate_link}"
             )
 
             try:
-                bot.send_message(chat_id=CHANNEL_ID, text=message)
+                if image_url:
+                    bot.send_photo(
+                        chat_id=CHANNEL_ID,
+                        photo=image_url,
+                        caption=caption
+                    )
+                else:
+                    bot.send_message(
+                        chat_id=CHANNEL_ID,
+                        text=caption
+                    )
+
                 save_posted(link)
                 posted_links.add(link)
-                time.sleep(DELAY_BETWEEN_POSTS)
+                time.sleep(POST_DELAY)
+
             except Exception as e:
                 print("Error:", e)
 
