@@ -1,7 +1,7 @@
 import feedparser
 import time
 import requests
-from telegram import Bot, InputMediaPhoto
+from telegram import Bot
 
 # ========== CONFIG ==========
 BOT_TOKEN = "8107176078:AAGNryRxC-y_UlNfpXiJk9hjAmJDoN13h3o"
@@ -66,17 +66,10 @@ while True:
             )
 
             try:
-                if image_url:
-                    bot.send_photo(
-                        chat_id=CHANNEL_ID,
-                        photo=image_url,
-                        caption=caption
-                    )
-                else:
-                    bot.send_message(
-                        chat_id=CHANNEL_ID,
-                        text=caption
-                    )
+                bot.send_message(
+    chat_id=CHANNEL_ID,
+    text=caption
+)
 
                 save_posted(link)
                 posted_links.add(link)
