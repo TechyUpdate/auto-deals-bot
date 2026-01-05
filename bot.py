@@ -4,8 +4,8 @@ import requests
 from telegram import Bot, InputMediaPhoto
 
 # ========== CONFIG ==========
-BOT_TOKEN = "PASTE_YOUR_BOT_TOKEN"
-CHANNEL_ID = "@yourchannelusername"
+BOT_TOKEN = "8107176078:AAGNryRxC-y_UlNfpXiJk9hjAmJDoN13h3o"
+CHANNEL_ID = "@muftdealsbot"
 
 RSS_FEEDS = [
     "https://www.desidime.com/deals/feed"
