@@ -79,12 +79,17 @@ while True:
             title = entry.title
             summary = clean_text(entry.get("summary", ""))
 
+# ---- BASIC QUALITY FILTER ----
+low_title = title.lower()
+
+if "off" not in low_title and "₹" not in title and "%" not in title:
+    continue
             message = (
-                f"🔥 {title}\n\n"
-                f"📝 {summary}\n\n"
-                f"🛒 Buy Now 👇\n"
-                f"{link}"
-            )
+    f"🔥 {title}\n\n"
+    f"⚡ Limited Time Offer\n"
+    f"🛒 Buy Now 👇\n"
+    f"{link}"
+)
 
             try:
                 bot.send_message(
