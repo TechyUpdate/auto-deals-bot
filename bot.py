@@ -13,7 +13,6 @@ CHANNEL_ID = "@muftdeals"            # Telegram channel username
 
 # ================= RSS FEEDS (MULTIPLE – FAST) =================
 RSS_FEEDS = [
-    "https://hnrss.org/frontpage",
     "https://www.dealsmagnet.com/feed"
 ]
 
