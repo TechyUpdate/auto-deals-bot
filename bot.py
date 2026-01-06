@@ -5,7 +5,7 @@ from telegram import Bot
 
 # ========== CONFIG ==========
 BOT_TOKEN = "8107176078:AAGNryRxC-y_UlNfpXiJk9hjAmJDoN13h3o"
-CHANNEL_ID = "@muftdealsbot"
+CHANNEL_ID = "@muftdeals"
 
 RSS_FEEDS = [
     "https://www.desidime.com/deals/feed"
