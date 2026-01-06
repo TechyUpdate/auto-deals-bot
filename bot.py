@@ -15,7 +15,7 @@ CHECK_INTERVAL = 600        # 10 min
 POST_DELAY = 20             # spam safe
 AFFILIATE_TAG = "?affid=YOURTAG"   # placeholder
 
-bot = Bot(token=BOT_TOKEN)
+bot = Bot(8107176078:AAGNryRxC-y_UlNfpXiJk9hjAmJDoN13h3o)
 
 # ========== DUPLICATE SYSTEM ==========
 def load_posted():
