@@ -17,8 +17,16 @@ AFFILIATE_TAG = "?affid=YOURTAG"
 
 bot = Bot(token=BOT_TOKEN)
 
+print("🤖 Bot started and running")
+
+bot.send_message(
+    chat_id=CHANNEL_ID,
+    text="✅ TEST SUCCESS: Bot is LIVE and can post in this channel"
+)
+
 # ========== DUPLICATE SYSTEM ==========
 def load_posted():
+    ...
     try:
         with open("posted.txt", "r") as f:
             return set(line.strip() for line in f if line.strip())
