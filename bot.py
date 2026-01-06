@@ -13,11 +13,9 @@ CHANNEL_ID = "@muftdeals"            # Telegram channel username
 
 # ================= RSS FEEDS (MULTIPLE – FAST) =================
 RSS_FEEDS = [
-    "https://www.desidime.com/deals/feed",
-    "https://www.grabon.in/rss/",
-    "https://www.offerclue.com/feed/"
+    "https://hnrss.org/frontpage",
+    "https://www.dealsmagnet.com/feed"
 ]
-
 
 # ================= TIMING =================
 CHECK_INTERVAL = 120   # 2 minutes (testing ke liye fast)
