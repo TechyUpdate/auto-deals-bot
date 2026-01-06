@@ -7,4 +7,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD ["python", "bot.py"]
+# Dummy web server (Render ko port mil jaaye)
+EXPOSE 8080
+
+CMD python bot.py & python -m http.server 8080
