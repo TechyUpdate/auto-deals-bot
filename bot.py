@@ -18,7 +18,7 @@ RSS_FEEDS = [
 
 # ================= TIMING =================
 CHECK_INTERVAL = 120   # 2 minutes (testing ke liye fast)
-POST_DELAY = 20
+POST_DELAY = 180
 
 
 # ================= BOT OBJECT =================
